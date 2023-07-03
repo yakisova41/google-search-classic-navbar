@@ -1,5 +1,12 @@
-import { getIconSvgElement, enablePaths, paths } from "../icons"
+import { getIconSvgElement, enablePaths, paths } from "../icons";
 import { Search } from "./Search";
+
+interface NavBarItem {
+  type: "item" | "match-active";
+  itemElem: Element;
+  activeElem?: Element;
+  matchTbm?: string;
+}
 
 export class NavBarItems {
   private parentElement!: Element;
@@ -11,6 +18,7 @@ export class NavBarItems {
     shop: "Shop",
   };
   private thisTbm: string = "all";
+  private items: NavBarItem[] = [];
 
   private itemContainerClassName = "navbar-item-container";
   private itemIconOuterClassName = "navbar-item-icon-outer";
@@ -20,18 +28,53 @@ export class NavBarItems {
   }
 
   public setParentElement(elem: Element | null | undefined) {
-    if(elem !== undefined && elem !== null){
-    this.parentElement = elem;
-    this.parentElement.classList.add("navbar-parent");      
+    if (elem !== undefined && elem !== null) {
+      this.parentElement = elem;
+      this.parentElement.classList.add("navbar-parent");
     }
-
   }
 
   public render() {
-    this.appendItems();
+    this.items.forEach(({ type, itemElem, matchTbm, activeElem }) => {
+      if (
+        type === "match-active" &&
+        matchTbm === this.thisTbm &&
+        activeElem !== undefined
+      ) {
+        this.parentElement.appendChild(activeElem);
+      }
+
+      if (type === "match-active" && matchTbm !== this.thisTbm) {
+        this.parentElement.appendChild(itemElem);
+      }
+
+      if (type === "item") {
+        this.parentElement.appendChild(itemElem);
+      }
+    });
   }
 
-  private createItemElem(
+  public appendItem(itemElem: Element) {
+    this.items.push({
+      type: "item",
+      itemElem,
+    });
+  }
+
+  public appendTbmActiveItem(
+    matchTbm: string,
+    itemElem: Element,
+    activeElem: Element
+  ) {
+    this.items.push({
+      type: "match-active",
+      matchTbm,
+      itemElem,
+      activeElem,
+    });
+  }
+
+  public createItemElem(
     text: string,
     iconElem: HTMLElement,
     isLink = false,
@@ -63,40 +106,5 @@ export class NavBarItems {
       itemContainer.classList.add("navbar-now-item");
     }
     return itemContainer;
-  }
-
-  private appendItems() {
-    const tbmNames = Object.keys(this.tbmList);
-
-    tbmNames.forEach((tbmName) => {
-      if (tbmName === this.thisTbm) {
-        // not link
-        const item = this.createItemElem(
-          this.tbmList[tbmName],
-          getIconSvgElement(enablePaths[tbmName]),
-          false
-        );
-        this.parentElement.appendChild(item);
-      } else {
-        // link
-        const search = new Search(location.search);
-
-        if (tbmName !== "all") {
-          search.append("tbm", tbmName);
-        } else {
-          search.delete("tbm");
-        }
-
-        const href = search.getURL();
-
-        const item = this.createItemElem(
-          this.tbmList[tbmName],
-          getIconSvgElement(paths[tbmName]),
-          true,
-          href
-        );
-        this.parentElement.appendChild(item);
-      }
-    });
   }
 }
