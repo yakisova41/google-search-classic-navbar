@@ -40,7 +40,7 @@ export default function main() {
     shop: "div:nth-child(2)",
   };
 
-  window.addEventListener("load", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     switch (tbm) {
       case undefined: {
         const navbar = document.querySelector(navbarSelectors.all);

@@ -31,7 +31,7 @@ export class StyleInject {
   }
 
   public injectOnLoad(tbms: string[], callback: () => string) {
-    window.addEventListener("load", () => {
+    document.addEventListener("DOMContentLoaded", () => {
       let isInject = false;
 
       tbms.forEach((tbm) => {

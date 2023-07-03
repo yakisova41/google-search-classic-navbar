@@ -111,7 +111,7 @@ export default function registerStyle(styleInjecter: StyleInject) {
   
     .navbar-item-container > a {
       text-decoration: none;
-      color: var(--classic-google-nav-bar-text);
+      color: var(--classic-google-nav-bar-text)!important;
       -webkit-tap-highlight-color: rgba(0,0,0,.10);
     }
     `
