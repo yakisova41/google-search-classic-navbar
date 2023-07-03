@@ -10,7 +10,7 @@ export default function attachTheme(styleInjecter: StyleInject) {
     const styles = {
       dark: `
         :root {
-          --classic-google-nav-bar-text:#f1f3f4;
+          --classic-google-nav-bar-text:#bdc1c6;
           --classic-google-nav-bar-primary:#8ab4f8;
         }
       `,
