@@ -10,15 +10,21 @@ function getIconBase64() {
 
 module.exports = {
   userScriptHeader: [
-    ["@name", "Google Search Classoc Navbar"],
+    ["@name", "Google Search Classic Navbar"],
     ["@version", packagejson.version],
     ["@author", "yakisova41"],
     ["@license", packagejson.license],
     ["@namespace", "https://yakisova.com"],
-    ["@description", "Google Search Classoc Navbar"],
+    ["@description", "Restore the garbage UX nav bar."],
     ["@match", "https://www.google.com/search*"],
+    ["@match", "https://www.google.co.jp/search*"],
     ["@grant", "unsafeWindow"],
     ["@run-at", "document-start"],
+    ["@name:ja", "Google検索の上のメニューを元に戻す"],
+    [
+      "@description:ja",
+      "Google検索の上のメニューがキモくなったので、従来のデザインに無理やり戻します。",
+    ],
   ],
   devServer: {
     port: 5173,

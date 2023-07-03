@@ -42,7 +42,7 @@ export default function registerNavItems(itemsDom: NavBarItems) {
 
   itemsDom.appendItem(
     itemsDom.createItemElem(
-      "Map",
+      "Maps",
       getIconSvgElement(paths.maps, "0 0 16 16"),
       true,
       createMapUrl()
