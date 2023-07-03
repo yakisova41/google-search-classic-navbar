@@ -55,7 +55,7 @@ export default function registerNavItems(itemsDom: NavBarItems) {
       "News",
       getIconSvgElement(paths.nws),
       true,
-      createTbmUrl("vid")
+      createTbmUrl("nws")
     ),
     itemsDom.createItemElem("News", getIconSvgElement(enablePaths.nws), false)
   );
