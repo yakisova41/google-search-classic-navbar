@@ -4,7 +4,8 @@
     "ts-extension-builder": "^0.2.6"
   },
   "scripts": {
-    "dev": "npx ts-extension-builder dev"
+    "dev": "npx ts-extension-builder dev",
+    "build:userscript": "npx ts-extension-builder build type=userscript"
   },
   "license": "MIT",
   "version": "0.1.0"
