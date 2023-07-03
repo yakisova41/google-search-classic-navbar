@@ -1,7 +1,6 @@
 import { NavBarItems } from "./classes/NavBarItems";
 import { Search } from "./classes/Search";
 import { StyleInject } from "./classes/StyleIncject";
-import { enablePaths, getIconSvgElement, paths } from "./icons";
 import registerNavItems from "./registerNavItems";
 import registerStyle from "./registerStyle";
 import attachTheme from "./theme";
