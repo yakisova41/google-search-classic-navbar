@@ -19,7 +19,7 @@ module.exports = {
       "@description",
       'This script replaces the "handle" in the YouTube comments section to user name',
     ],
-    ["@match", "https://www.google.com/search/*"],
+    ["@match", "https://www.google.com/search*"],
     ["@grant", "unsafeWindow"],
     ["@run-at", "document-start"],
   ],
