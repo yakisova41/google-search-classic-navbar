@@ -10,15 +10,12 @@ function getIconBase64() {
 
 module.exports = {
   userScriptHeader: [
-    ["@name", "Restore google navbar"],
+    ["@name", "Google Search Classoc Navbar"],
     ["@version", packagejson.version],
     ["@author", "yakisova41"],
     ["@license", packagejson.license],
     ["@namespace", "https://yakisova.com"],
-    [
-      "@description",
-      'This script replaces the "handle" in the YouTube comments section to user name',
-    ],
+    ["@description", "Google Search Classoc Navbar"],
     ["@match", "https://www.google.com/search*"],
     ["@grant", "unsafeWindow"],
     ["@run-at", "document-start"],
