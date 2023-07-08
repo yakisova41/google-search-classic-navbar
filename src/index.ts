@@ -6,8 +6,6 @@ import registerStyle from "./registerStyle";
 import attachTheme from "./theme";
 
 export default function main() {
-  console.log("google navbar");
-
   const searchManager = new Search(location.search);
   const tbm = searchManager.get("tbm");
 
