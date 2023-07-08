@@ -1,29 +1,34 @@
 import { NavBarItems } from "./classes/NavBarItems";
 import { Search } from "./classes/Search";
 import { enablePaths, getIconSvgElement, paths } from "./icons";
+import { translate } from "./lang";
 
 export default function registerNavItems(itemsDom: NavBarItems) {
   itemsDom.appendTbmActiveItem(
     "all",
     itemsDom.createItemElem(
-      "All",
+      translate("All"),
       getIconSvgElement(paths.all),
       true,
       createAllUrl()
     ),
-    itemsDom.createItemElem("All", getIconSvgElement(enablePaths.all), false)
+    itemsDom.createItemElem(
+      translate("All"),
+      getIconSvgElement(enablePaths.all),
+      false
+    )
   );
 
   itemsDom.appendTbmActiveItem(
     "isch",
     itemsDom.createItemElem(
-      "Images",
+      translate("Images"),
       getIconSvgElement(paths.isch),
       true,
       createTbmUrl("isch")
     ),
     itemsDom.createItemElem(
-      "Images",
+      translate("Images"),
       getIconSvgElement(enablePaths.isch),
       false
     )
@@ -32,17 +37,21 @@ export default function registerNavItems(itemsDom: NavBarItems) {
   itemsDom.appendTbmActiveItem(
     "vid",
     itemsDom.createItemElem(
-      "Videos",
+      translate("Videos"),
       getIconSvgElement(paths.vid),
       true,
       createTbmUrl("vid")
     ),
-    itemsDom.createItemElem("Videos", getIconSvgElement(enablePaths.vid), false)
+    itemsDom.createItemElem(
+      translate("Videos"),
+      getIconSvgElement(enablePaths.vid),
+      false
+    )
   );
 
   itemsDom.appendItem(
     itemsDom.createItemElem(
-      "Maps",
+      translate("Maps"),
       getIconSvgElement(paths.maps, "0 0 16 16"),
       true,
       createMapUrl()
@@ -52,24 +61,28 @@ export default function registerNavItems(itemsDom: NavBarItems) {
   itemsDom.appendTbmActiveItem(
     "nws",
     itemsDom.createItemElem(
-      "News",
+      translate("News"),
       getIconSvgElement(paths.nws),
       true,
       createTbmUrl("nws")
     ),
-    itemsDom.createItemElem("News", getIconSvgElement(enablePaths.nws), false)
+    itemsDom.createItemElem(
+      translate("News"),
+      getIconSvgElement(enablePaths.nws),
+      false
+    )
   );
 
   itemsDom.appendTbmActiveItem(
     "shop",
     itemsDom.createItemElem(
-      "Shopping",
+      translate("Shopping"),
       getIconSvgElement(paths.shop),
       true,
       createTbmUrl("shop")
     ),
     itemsDom.createItemElem(
-      "Shopping",
+      translate("Shopping"),
       getIconSvgElement(enablePaths.shop),
       false
     )
@@ -78,13 +91,13 @@ export default function registerNavItems(itemsDom: NavBarItems) {
   itemsDom.appendTbmActiveItem(
     "bks",
     itemsDom.createItemElem(
-      "Books",
+      translate("Books"),
       getIconSvgElement(paths.bks),
       true,
       createTbmUrl("bks")
     ),
     itemsDom.createItemElem(
-      "Books",
+      translate("Books"),
       getIconSvgElement(paths.bks),
       false
     )
