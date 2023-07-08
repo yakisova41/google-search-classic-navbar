@@ -25,6 +25,7 @@ module.exports = {
       "@description:ja",
       "Google検索の上のメニューがキモくなったので、従来のデザインに無理やり戻します。",
     ],
+    ["@icon", getIconBase64()],
   ],
   devServer: {
     port: 5173,
@@ -33,7 +34,7 @@ module.exports = {
   },
   manifest: {
     name: "__MSG_Name__",
-    short_name: "name",
+    short_name: "gscn",
     version: String(packagejson.version),
     manifest_version: 3,
     description: "__MSG_Description__",
@@ -42,6 +43,25 @@ module.exports = {
       16: "assets/icon16.png",
       48: "assets/icon48.png",
       128: "assets/icon128.png",
+    },
+  },
+  locales: {
+    ja: {
+      Name: {
+        message: "Google検索の上のメニューを元に戻す",
+      },
+      Description: {
+        message:
+          "Google検索の上のメニューがキモくなったので、従来のデザインに無理やり戻します。",
+      },
+    },
+    en: {
+      Name: {
+        message: "Google Search Classic Navbar",
+      },
+      Description: {
+        message: "Restore the garbage UX nav bar.",
+      },
     },
   },
   assetsDir: path.join(__dirname, "assets"),
