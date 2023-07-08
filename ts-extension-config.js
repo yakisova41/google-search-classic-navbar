@@ -46,5 +46,5 @@ module.exports = {
   },
   assetsDir: path.join(__dirname, "assets"),
   noSandbox: false,
-  passCSP: true,
+  passCSP: false,
 };
