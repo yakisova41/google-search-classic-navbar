@@ -86,6 +86,15 @@ export default function main() {
         itemsDom.setTbm("nws");
         break;
       }
+
+      case "bks": {
+        const navbar = document.querySelector(navbarSelectors.all);
+        const itemsParent = navbar?.querySelector(navbarItemsSelectors.all);
+        removeOriginalItems(itemsParent);
+        itemsDom.setParentElement(itemsParent);
+        itemsDom.setTbm("bks");
+        break;
+      }
     }
 
     registerNavItems(itemsDom);

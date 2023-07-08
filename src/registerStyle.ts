@@ -2,7 +2,7 @@ import { StyleInject } from "./classes/StyleIncject";
 
 export default function registerStyle(styleInjecter: StyleInject) {
   styleInjecter.addStyle(
-    ["all", "vid", "nws"],
+    ["all", "vid", "nws", "bks"],
     `
     .main > div:nth-child(1) > div:nth-child(1) {
       height: 45px;

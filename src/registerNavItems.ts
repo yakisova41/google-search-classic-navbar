@@ -74,6 +74,21 @@ export default function registerNavItems(itemsDom: NavBarItems) {
       false
     )
   );
+
+  itemsDom.appendTbmActiveItem(
+    "bks",
+    itemsDom.createItemElem(
+      "Books",
+      getIconSvgElement(paths.bks),
+      true,
+      createTbmUrl("bks")
+    ),
+    itemsDom.createItemElem(
+      "Books",
+      getIconSvgElement(paths.bks),
+      false
+    )
+  );
 }
 
 function createAllUrl() {
