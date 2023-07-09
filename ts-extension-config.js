@@ -23,7 +23,7 @@ module.exports = {
     ["@name:ja", "Google検索の上のメニューを元に戻す"],
     [
       "@description:ja",
-      "Google検索の上のメニューがキモくなったので、従来のデザインに無理やり戻します。",
+      "Google検索の上のメニューを従来のデザインに無理やり戻します。",
     ],
     ["@icon", getIconBase64()],
   ],
@@ -51,8 +51,7 @@ module.exports = {
         message: "Google検索の上のメニューを元に戻す",
       },
       Description: {
-        message:
-          "Google検索の上のメニューがキモくなったので、従来のデザインに無理やり戻します。",
+        message: "Google検索の上のメニューを従来のデザインに無理やり戻します。",
       },
     },
     en: {
