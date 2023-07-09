@@ -17,7 +17,18 @@ export class StyleInject {
       elem.innerHTML = elem.innerHTML + this.styles["*"].join("");
     }
 
-    document.head.appendChild(elem);
+    const head = document.head;
+
+    if (head === null) {
+      const i = setInterval(() => {
+        if (document.head !== null) {
+          document.head.appendChild(elem);
+          clearInterval(i);
+        }
+      }, 100);
+    } else {
+      document.head.appendChild(elem);
+    }
   }
 
   public addStyle(tbms: string[], style: string) {

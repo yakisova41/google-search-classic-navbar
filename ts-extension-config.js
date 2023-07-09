@@ -16,8 +16,8 @@ module.exports = {
     ["@license", packagejson.license],
     ["@namespace", "https://yakisova.com"],
     ["@description", "Restore the garbage UX nav bar."],
-    ["@match", "https://www.google.com/search*"],
-    ["@match", "https://www.google.co.jp/search*"],
+    ["@match", "https://www.google.com/*"],
+    ["@match", "https://www.google.co.jp/*"],
     ["@grant", "unsafeWindow"],
     ["@run-at", "document-start"],
     ["@name:ja", "Google検索の上のメニューを元に戻す"],
@@ -66,5 +66,6 @@ module.exports = {
   },
   assetsDir: path.join(__dirname, "assets"),
   noSandbox: false,
-  passCSP: false,
+  passCSP: true,
+  extensionLoadMode: "contentScript",
 };

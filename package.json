@@ -5,7 +5,8 @@
   },
   "scripts": {
     "dev": "npx ts-extension-builder dev",
-    "build:userscript": "npx ts-extension-builder build type=userscript"
+    "build:userscript": "npx ts-extension-builder build type=userscript",
+    "build:extension": "npx ts-extension-builder build type=extension"
   },
   "license": "MIT",
   "version": "0.1.0-beta"
