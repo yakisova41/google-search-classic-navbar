@@ -9,5 +9,5 @@
     "build:extension": "npx ts-extension-builder build type=extension"
   },
   "license": "MIT",
-  "version": "0.1.0-beta"
+  "version": "0.2.0"
 }
