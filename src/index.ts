@@ -6,6 +6,7 @@ import registerStyle from "./registerStyle";
 import attachTheme from "./theme";
 
 export default function main() {
+  console.log("A");
   const searchManager = new Search(location.search);
   const tbm = searchManager.get("tbm");
 
@@ -25,9 +26,9 @@ export default function main() {
   styleInjecter.inject();
 
   const navbarSelectors = {
-    all: ".main > div:nth-child(1) > div:nth-child(8)",
-    isch: "body > div:nth-child(6) > c-wiz > div",
-    vid: ".main > div:nth-child(1) > div:nth-child(8)",
+    all: ".main > div:nth-child(1) > div:nth-child(7)",
+    isch: "body > div:nth-child(6) > c-wiz > div:nth-child(2)",
+    vid: ".main > div:nth-child(1) > div:nth-child(7)",
     shop: "#main > div:nth-child(1) > div:nth-child(4)",
   };
 
