@@ -98,7 +98,7 @@ export default function registerNavItems(itemsDom: NavBarItems) {
     ),
     itemsDom.createItemElem(
       translate("Books"),
-      getIconSvgElement(paths.bks),
+      getIconSvgElement(enablePaths.bks),
       false
     )
   );
