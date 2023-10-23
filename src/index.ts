@@ -4,6 +4,7 @@ import { StyleInject } from "./classes/StyleIncject";
 import registerNavItems from "./registerNavItems";
 import registerStyle from "./registerStyle";
 import attachTheme from "./theme";
+import { trustedTypes } from "trusted-types";
 
 export default function main() {
   const searchManager = new Search(location.search);
@@ -25,9 +26,9 @@ export default function main() {
   styleInjecter.inject();
 
   const navbarSelectors = {
-    all: ".main > div:nth-child(1) > div:nth-child(7)",
+    all: ".main > div:nth-child(1) > div:nth-child(9)",
     isch: "body > div:nth-child(6) > c-wiz > div:nth-child(2)",
-    vid: ".main > div:nth-child(1) > div:nth-child(7)",
+    vid: ".main > div:nth-child(1) > div:nth-child(9)",
     shop: "#main > div:nth-child(1) > div:nth-child(4)",
   };
 
@@ -107,4 +108,27 @@ function removeOriginalItems(itemsParent: Element | null | undefined) {
   items.forEach((item) => {
     item.remove();
   });
+}
+
+export const trustedPolicy = window.trustedTypes.createPolicy(
+  "google-classic-navbar-trusted-policy",
+  {
+    createHTML: (input: string) => {
+      return input;
+    },
+  }
+);
+
+declare global {
+  interface Window {
+    trustedTypes: typeof trustedTypes;
+  }
+}
+
+export interface TrustedElement extends ElemToTrusted {
+  innerHTML: string | TrustedHTML;
+}
+
+interface ElemToTrusted extends Element {
+  innerHTML: any;
 }

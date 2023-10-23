@@ -1,3 +1,5 @@
+import { TrustedElement, trustedPolicy } from "src";
+
 export class StyleInject {
   private tbm!: string;
   private styles: Record<string, string[]> = {};
@@ -7,14 +9,16 @@ export class StyleInject {
   }
 
   public inject() {
-    const elem = document.createElement("style");
+    const elem: TrustedElement = document.createElement("style");
 
     if (this.styles[this.tbm] !== undefined) {
-      elem.innerHTML = this.styles[this.tbm].join("");
+      elem.innerHTML = trustedPolicy.createHTML(this.styles[this.tbm].join(""));
     }
 
     if (this.styles["*"] !== undefined) {
-      elem.innerHTML = elem.innerHTML + this.styles["*"].join("");
+      elem.innerHTML = trustedPolicy.createHTML(
+        elem.innerHTML + this.styles["*"].join("")
+      );
     }
 
     const head = document.head;
@@ -55,8 +59,10 @@ export class StyleInject {
       });
 
       if (isInject) {
-        const elem = document.createElement("style");
-        elem.innerHTML = callback().replaceAll("\t", "").replaceAll("\n", "");
+        const elem: TrustedElement = document.createElement("style");
+        elem.innerHTML = trustedPolicy.createHTML(
+          callback().replaceAll("\t", "").replaceAll("\n", "")
+        );
         document.head.appendChild(elem);
       }
     });
