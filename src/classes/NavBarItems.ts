@@ -4,8 +4,8 @@ import { Search } from "./Search";
 
 interface NavBarItem {
   type: "item" | "match-active";
-  itemElem: Element;
-  activeElem?: Element;
+  itemElem: Element | TrustedElement;
+  activeElem?: Element | TrustedElement;
   matchTbm?: string;
 }
 
@@ -55,7 +55,7 @@ export class NavBarItems {
     });
   }
 
-  public appendItem(itemElem: Element) {
+  public appendItem(itemElem: Element | TrustedElement) {
     this.items.push({
       type: "item",
       itemElem,
@@ -64,8 +64,8 @@ export class NavBarItems {
 
   public appendTbmActiveItem(
     matchTbm: string,
-    itemElem: Element,
-    activeElem: Element
+    itemElem: Element | TrustedElement,
+    activeElem: Element | TrustedElement
   ) {
     this.items.push({
       type: "match-active",
@@ -77,7 +77,7 @@ export class NavBarItems {
 
   public createItemElem(
     text: string,
-    iconElem: HTMLElement,
+    iconElem: HTMLElement | TrustedElement,
     isLink = false,
     href = ""
   ) {
