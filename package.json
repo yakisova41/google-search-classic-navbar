@@ -1,6 +1,6 @@
 {
   "name": "restore-google-navbar",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "dependencies": {
     "ts-extension-builder": "^0.2.7"
   },
