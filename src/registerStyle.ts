@@ -56,7 +56,7 @@ export default function registerStyle(styleInjecter: StyleInject) {
     }
 
     #cnt > div:nth-child(4) {
-      padding: 17px 0 0px calc(var(--center-abs-margin) - 20px);
+      padding: 23px 0 0px calc(var(--center-abs-margin) - 20px);
     }
 
     #cnt > div:nth-child(4) > div:nth-child(2) {
