@@ -8,16 +8,13 @@ export default function registerStyle(styleInjecter: StyleInject) {
       height: 45px;
     }
 
-    .main > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) {
+    .main > div:nth-child(1) > div:nth-child(9) > div:nth-child(1) {
       padding-left: 0;
       height: 43px;
     }
 
-    .main > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) {
-      align-items: center;
-    }
 
-    .main > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+    .main > div:nth-child(1) > div:nth-child(9) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
       align-items: center;
     }
 
