@@ -1,3 +1,4 @@
+import { TrustedElement, trustedPolicy } from "src";
 import { getIconSvgElement, enablePaths, paths } from "../icons";
 import { Search } from "./Search";
 
@@ -80,19 +81,19 @@ export class NavBarItems {
     isLink = false,
     href = ""
   ) {
-    const itemContainer = document.createElement("div");
+    const itemContainer: TrustedElement = document.createElement("div");
     itemContainer.className = this.itemContainerClassName;
 
     if (isLink) {
-      const linkElem = document.createElement("a");
-      linkElem.href = href;
+      const linkElem: TrustedElement = document.createElement("a");
+      linkElem.setAttribute("href", href);
 
       const iconOuter = document.createElement("span");
       iconOuter.appendChild(iconElem);
       iconOuter.className = this.itemIconOuterClassName;
       linkElem.appendChild(iconOuter);
 
-      linkElem.innerHTML = linkElem.innerHTML + text;
+      linkElem.innerHTML = trustedPolicy.createHTML(linkElem.innerHTML + text);
       itemContainer.appendChild(linkElem);
       itemContainer.classList.add("navbar-link-item");
     } else {
@@ -102,7 +103,9 @@ export class NavBarItems {
 
       itemContainer.appendChild(iconOuter);
 
-      itemContainer.innerHTML = itemContainer.innerHTML + text;
+      itemContainer.innerHTML = trustedPolicy.createHTML(
+        itemContainer.innerHTML + text
+      );
       itemContainer.classList.add("navbar-now-item");
     }
     return itemContainer;

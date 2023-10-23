@@ -1,13 +1,16 @@
 {
   "name": "restore-google-navbar",
   "version": "0.2.2",
+  "dependencies": {
+    "ts-extension-builder": "^0.2.7"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "npx ts-extension-builder dev",
     "build:userscript": "npx ts-extension-builder build type=userscript",
     "build:extension": "npx ts-extension-builder build type=extension"
   },
-  "dependencies": {
-    "ts-extension-builder": "^0.2.7"
+  "devDependencies": {
+    "@types/trusted-types": "^2.0.5"
   }
 }

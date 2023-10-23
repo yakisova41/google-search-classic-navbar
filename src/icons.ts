@@ -1,3 +1,5 @@
+import { TrustedElement, trustedPolicy } from "src";
+
 export const paths: Record<string, string> = {
   all: `<path d="M16.32 14.88a8.04 8.04 0 1 0-1.44 1.44l5.76 5.76 1.44-1.44-5.76-5.76zm-6.36 1.08c-3.36 0-6-2.64-6-6s2.64-6 6-6 6 2.64 6 6-2.64 6-6 6"></path>`,
   isch: `<path d="M14 13l4 5H6l4-4 1.79 1.78L14 13zm-6.01-2.99A2 2 0 0 0 8 6a2 2 0 0 0-.01 4.01zM22 5v14a3 3 0 0 1-3 2.99H5c-1.64 0-3-1.36-3-3V5c0-1.64 1.36-3 3-3h14c1.65 0 3 1.36 3 3zm-2.01 0a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h7v-.01h7a1 1 0 0 0 1-1V5"></path>`,
@@ -21,8 +23,8 @@ export const enablePaths: Record<string, string> = {
 };
 
 export function getIconSvgElement(path: string, viewBox = "0 0 24 24") {
-  const svg = document.createElement("svg");
+  const svg: TrustedElement = document.createElement("svg");
   svg.setAttribute("viewBox", viewBox);
-  svg.innerHTML = path;
+  svg.innerHTML = trustedPolicy.createHTML(path);
   return svg;
 }
