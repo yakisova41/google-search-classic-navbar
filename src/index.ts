@@ -113,27 +113,25 @@ function removeOriginalItems(itemsParent: Element | null | undefined) {
   });
 }
 
-function getElement(selectorsList: string[]): null | Element {
-  let returnElem: null | Element = null;
-
-  selectorsList.forEach((selector) => {
-    const elem = document.querySelector(selector);
-    if (elem !== null && returnElem === null) {
-      returnElem = elem;
-    }
-  });
-
-  return returnElem;
-}
-
-export const trustedPolicy = window.trustedTypes.createPolicy(
-  "google-classic-navbar-trusted-policy",
-  {
+let trustedPolicy;
+if (window.trustedTypes === undefined) {
+  trustedPolicy = {
     createHTML: (input: string) => {
       return input;
     },
-  }
-);
+  };
+} else {
+  trustedPolicy = window.trustedTypes.createPolicy(
+    "google-classic-navbar-trusted-policy",
+    {
+      createHTML: (input: string) => {
+        return input;
+      },
+    }
+  );
+}
+
+export const exportedTrustedPolicy = trustedPolicy;
 
 declare global {
   interface Window {
