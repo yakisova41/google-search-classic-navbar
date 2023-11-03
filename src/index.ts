@@ -126,14 +126,23 @@ function getElement(selectorsList: string[]): null | Element {
   return returnElem;
 }
 
-export const trustedPolicy = window.trustedTypes.createPolicy(
-  "google-classic-navbar-trusted-policy",
-  {
+let trustedPolicy;
+if (window.trustedTypes === undefined) {
+  trustedPolicy = {
     createHTML: (input: string) => {
       return input;
     },
-  }
-);
+  };
+} else {
+  trustedPolicy = window.trustedTypes.createPolicy(
+    "google-classic-navbar-trusted-policy",
+    {
+      createHTML: (input: string) => {
+        return input;
+      },
+    }
+  );
+}
 
 declare global {
   interface Window {
