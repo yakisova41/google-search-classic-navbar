@@ -110,14 +110,25 @@ function removeOriginalItems(itemsParent: Element | null | undefined) {
   });
 }
 
-export const trustedPolicy = window.trustedTypes.createPolicy(
-  "google-classic-navbar-trusted-policy",
-  {
+let trustedPolicy;
+if (window.trustedTypes === undefined) {
+  trustedPolicy = {
     createHTML: (input: string) => {
       return input;
     },
-  }
-);
+  };
+} else {
+  trustedPolicy = window.trustedTypes.createPolicy(
+    "google-classic-navbar-trusted-policy",
+    {
+      createHTML: (input: string) => {
+        return input;
+      },
+    }
+  );
+}
+
+export const exportedTrustedPolicy = trustedPolicy;
 
 declare global {
   interface Window {
