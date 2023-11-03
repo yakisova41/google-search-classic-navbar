@@ -1,4 +1,4 @@
-import { TrustedElement, exportedTrustedPolicy } from "src";
+import { TrustedElement, trustedPolicy } from "src";
 
 export class StyleInject {
   private tbm!: string;
@@ -12,13 +12,11 @@ export class StyleInject {
     const elem: TrustedElement = document.createElement("style");
 
     if (this.styles[this.tbm] !== undefined) {
-      elem.innerHTML = exportedTrustedPolicy.createHTML(
-        this.styles[this.tbm].join("")
-      );
+      elem.innerHTML = trustedPolicy.createHTML(this.styles[this.tbm].join(""));
     }
 
     if (this.styles["*"] !== undefined) {
-      elem.innerHTML = exportedTrustedPolicy.createHTML(
+      elem.innerHTML = trustedPolicy.createHTML(
         elem.innerHTML + this.styles["*"].join("")
       );
     }
@@ -62,7 +60,7 @@ export class StyleInject {
 
       if (isInject) {
         const elem: TrustedElement = document.createElement("style");
-        elem.innerHTML = exportedTrustedPolicy.createHTML(
+        elem.innerHTML = trustedPolicy.createHTML(
           callback().replaceAll("\t", "").replaceAll("\n", "")
         );
         document.head.appendChild(elem);
