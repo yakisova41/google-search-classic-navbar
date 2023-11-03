@@ -1,4 +1,4 @@
-import { TrustedElement, trustedPolicy } from "src";
+import { TrustedElement, exportedTrustedPolicy } from "src";
 
 export const paths: Record<string, string> = {
   all: `<path d="M16.32 14.88a8.04 8.04 0 1 0-1.44 1.44l5.76 5.76 1.44-1.44-5.76-5.76zm-6.36 1.08c-3.36 0-6-2.64-6-6s2.64-6 6-6 6 2.64 6 6-2.64 6-6 6"></path>`,
@@ -25,6 +25,6 @@ export const enablePaths: Record<string, string> = {
 export function getIconSvgElement(path: string, viewBox = "0 0 24 24") {
   const svg: TrustedElement = document.createElement("svg");
   svg.setAttribute("viewBox", viewBox);
-  svg.innerHTML = trustedPolicy.createHTML(path);
+  svg.innerHTML = exportedTrustedPolicy.createHTML(path);
   return svg;
 }

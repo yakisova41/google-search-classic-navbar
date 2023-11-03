@@ -143,6 +143,7 @@ if (window.trustedTypes === undefined) {
     }
   );
 }
+export const exportedTrustedPolicy = trustedPolicy;
 
 declare global {
   interface Window {
