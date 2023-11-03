@@ -18,6 +18,21 @@ export default function registerStyle(styleInjecter: StyleInject) {
       align-items: center;
     }
 
+
+    .main > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) {
+      padding-left: 0;
+      height: 43p;
+    }
+
+
+    .main > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+      align-items: center;
+    }
+
+    .main > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > .navbar-item-container {
+      margin: 9px 1px 0!important;
+    }
+
     @media (min-width: 1124px) and (max-width: 1300px){
       .srp {
         --center-abs-margin: 30px!important;
