@@ -106,9 +106,11 @@ export default function main() {
         break;
       }
     }
-
     registerNavItems(itemsDom);
-    itemsDom.render();
+
+    setTimeout(() => {
+      itemsDom.render();
+    });
   });
 }
 
