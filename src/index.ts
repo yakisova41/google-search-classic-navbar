@@ -25,27 +25,31 @@ export default function main() {
 
   styleInjecter.inject();
 
-  const navbarSelectors = {
-    all: [
-      ".main > div:nth-child(1) > div:nth-child(9)",
-      ".main > div:nth-child(1) > div:nth-child(3)",
-    ],
-    isch: "body > div:nth-child(6) > c-wiz > div:nth-child(2)",
-    vid: ".main > div:nth-child(1) > div:nth-child(9)",
-    shop: "#main > div:nth-child(1) > div:nth-child(4)",
-  };
-
-  const navbarItemsSelectors = {
-    all: "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
-    isch: "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
-    vid: "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)",
-    shop: "div:nth-child(2)",
-  };
-
   document.addEventListener("DOMContentLoaded", () => {
+    const navbarNthChild = getNavbarNthChild();
+
+    const navbarSelectors = {
+      all: [
+        `.main > div:nth-child(1) > div:nth-child(${navbarNthChild})`,
+        ".main > div:nth-child(1) > div:nth-child(3)",
+      ],
+      isch: "body > div:nth-child(6) > c-wiz > div:nth-child(2)",
+      vid: `.main > div:nth-child(1) > div:nth-child(${navbarNthChild})`,
+      shop: "#main > div:nth-child(1) > div:nth-child(4)",
+      bks: `.main > div:nth-child(1) > div:nth-child(9)`,
+    };
+
+    const navbarItemsSelectors = {
+      all: "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+      isch: "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
+      vid: "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)",
+      shop: "div:nth-child(2)",
+    };
+
     switch (tbm) {
       case undefined: {
         const navbar = getElement(navbarSelectors.all);
+        setUniqueSelector(navbar);
         const itemsParent = navbar?.querySelector(navbarItemsSelectors.all);
         removeOriginalItems(itemsParent);
         itemsDom.setParentElement(itemsParent);
@@ -64,6 +68,7 @@ export default function main() {
 
       case "vid": {
         const navbar = document.querySelector(navbarSelectors.vid);
+        setUniqueSelector(navbar);
         const itemsParent = navbar?.querySelector(navbarItemsSelectors.vid);
         removeOriginalItems(itemsParent);
         itemsDom.setParentElement(itemsParent);
@@ -73,6 +78,7 @@ export default function main() {
 
       case "shop": {
         const navbar = document.querySelector(navbarSelectors.shop);
+        setUniqueSelector(navbar);
         const itemsParent = navbar?.querySelector(navbarItemsSelectors.shop);
         removeOriginalItems(itemsParent);
         itemsDom.setParentElement(itemsParent);
@@ -82,6 +88,7 @@ export default function main() {
 
       case "nws": {
         const navbar = getElement(navbarSelectors.all);
+        setUniqueSelector(navbar);
         const itemsParent = navbar?.querySelector(navbarItemsSelectors.all);
         removeOriginalItems(itemsParent);
         itemsDom.setParentElement(itemsParent);
@@ -90,7 +97,8 @@ export default function main() {
       }
 
       case "bks": {
-        const navbar = getElement(navbarSelectors.all);
+        const navbar = document.querySelector(navbarSelectors.bks);
+        setUniqueSelector(navbar);
         const itemsParent = navbar?.querySelector(navbarItemsSelectors.all);
         removeOriginalItems(itemsParent);
         itemsDom.setParentElement(itemsParent);
@@ -98,9 +106,11 @@ export default function main() {
         break;
       }
     }
-
     registerNavItems(itemsDom);
-    itemsDom.render();
+
+    setTimeout(() => {
+      itemsDom.render();
+    });
   });
 }
 
@@ -124,6 +134,32 @@ function getElement(selectorsList: string[]): null | Element {
   });
 
   return returnElem;
+}
+
+function getNavbarNthChild() {
+  let nthChild = 0;
+
+  const children = document.querySelectorAll("#main > #cnt > *");
+
+  if (children !== undefined) {
+    children.forEach((child, index) => {
+      if (
+        child?.querySelector(
+          'div[role="navigation"] > div > #abss-dropdown_1'
+        ) !== null
+      ) {
+        nthChild = index + 1;
+      }
+    });
+  }
+
+  return nthChild;
+}
+
+function setUniqueSelector(navbar: Element | null) {
+  if (navbar !== null) {
+    navbar.classList.add("google-classic-navbar-parent-outer");
+  }
 }
 
 let trustedPolicy;
