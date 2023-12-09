@@ -138,6 +138,7 @@ function getElement(selectorsList: string[]): null | Element {
 
 function getNavbarNthChild() {
   let nthChild = 0;
+  let isFound = false;
 
   const children = document.querySelectorAll("#main > #cnt > *");
 
@@ -146,9 +147,20 @@ function getNavbarNthChild() {
       if (
         child?.querySelector(
           'div[role="navigation"] > div > #abss-dropdown_1'
+        ) !== null &&
+        !isFound
+      ) {
+        nthChild = index + 1;
+        isFound = true;
+      }
+
+      if (
+        child?.querySelector(
+          'div[role="navigation"] > div[data-st-cnt="mode"] > div[data-st-tgt="mode"] > div[data-id="trc"]'
         ) !== null
       ) {
         nthChild = index + 1;
+        isFound = true;
       }
     });
   }
