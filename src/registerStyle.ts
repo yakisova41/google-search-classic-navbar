@@ -2,6 +2,15 @@ import { StyleInject } from "./classes/StyleIncject";
 
 export default function registerStyle(styleInjecter: StyleInject) {
   styleInjecter.addStyle(
+    ["all"],
+    `
+    .navbar-item-container {
+      padding: 14px 12px 12px 10px!important;
+    }
+    `
+  );
+
+  styleInjecter.addStyle(
     ["all", "vid", "nws", "bks"],
     `
     .main > div:nth-child(1) > div:nth-child(1) {
